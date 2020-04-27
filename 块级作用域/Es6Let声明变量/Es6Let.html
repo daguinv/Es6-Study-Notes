@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+       
+    //1.
+        let a = 123;
+        console.log(window.a);  //undefined
+    //2.
+    //3.
+        //let a = 456;  //在同一作用域上重复声明报错
+        //在不同作用域下可以定义重复变量
+        {
+            let a = 456;
+            console.log(a);
+            let inner1 = 'inner1';
+            var inner2 = 'inner2'
+        }
+        // console.log(inner1);  //报错inner1 not defined
+        console.log(inner2);  //使用var变量没有块级作用域这个概念，只有函数作用域。
+
+        // 使用let关键字配合大括号{}会形成块级作用域，外面的不能访问里面的，里面可以访问外面的。
+        
+    // 4.
+        // 使用var声明变量提升，不会报错
+        console.log(raise)
+        var raise = 'raise';
+        // 当执行时
+        /* var raise;
+        console.log(raise);
+        raise = 'raise';*/
+
+        // 使用let解决了变量提升问题,当在声明前使用会报错告诉你不可以在声明的变量前使用。
+        // console.log(sheng);  //Cannot access 'sheng' before initialization
+        let sheng = 'sheng'
+        {
+            // console.log(sheng);
+            let sheng = 'innersheng';
+        }
+        // 其实ES6底层实现上,还是会有提升的,但是变量提升后会放去暂时性死区中,如果访问的变量在暂时性死区中就会报错Cannot access 'sheng' before initialization
+        // 当代码运行到变量声明时,才会从暂时性死区中移除。
+
+        // 例如如上代码：当在当前作用域声明前访问变量并不会向上查找,因为变量也会提升,访问当前作用域中有这个变量，所以不会向上查找
+        // 然后会把提升的变量放入死区中，此时console.log(sheng),访问的是死区死区中的变量,报错。
+    
+    //5 let 在循环中，每次进入循环体，都会开启一个新的作用域，并且将循环变量绑定在该作用域中
+
+    for(let i = 0; i < 10; i++){
+        let btn = document.createElement('button');
+        btn.innerHTML = '按钮' + i;
+        btn.onclick = function(){
+            console.log(i);
+        }
+        document.body.appendChild(btn);
+    }
+    // 上面代码可以理解为创建了10次大括号，每个大括号都是一个全新的作用域。所以访问的i都不是一个作用域中的。
+    </script>
+
+</body>
+
+</html>
