@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="container"></div>
+    <script>
+        function fn(a,b,c){
+           /*  这种写法的弊端当b c赋值为0时，不会赋值为0。
+            b = b || 2;  
+            c = c || 3; 
+            */
+            //使用下方的默认赋值方法，但是有点麻烦
+            b = b === undefined ? 2 : b;
+            c = c === undefined ? 3 : c;
+
+            return a + b + c;
+        }
+        const result = fn(1,5,0);
+
+
+
+        //Es6提供了参数默认值,可以方便的处理默认赋值问题
+        //
+        function sum(a = 1,b = 2,c = 3){
+            return a + b + c
+        }
+        console.log(sum(10,0));
+        console.log(sum(10,undefined,8)); 
+        //当向给第二个参数为默认值,第三个参数赋值，直接第二个参数undefined（只可以是undefined,不可以是别的）
+        
+        /*
+            dom 创建的元素
+            container 元素的父元素
+            content 元素的内容
+        */
+        function createElement(dom = 'div',container,content){
+            var dom  = document.createElement(dom);
+            dom.innerHTML = content;
+            container.appendChild(dom);
+        }
+        createElement(undefined,document.getElementById('container'),'大家好,我是div')
+
+        //参数默认值可以是函数表达式哦
+        function threeExamle(a,b = sum()){
+            console.log(b);
+            return a + b;
+        }
+        console.log(threeExamle(100));
+
+
+
+        // arguments问题 -->
+        // 在Es5中函数arguments对象的值会自动与函数参数的值进行映射
+        // 当修改参数的值,对应的arguments的值也会修改.当修改arguments的值是对应的参数的值也会修改
+        // 但他们的内存空间是独立的，只是值会同步。
+        
+        // 但是在严格模式下对使用arguments对象做出一些限制 -->
+        // 参数的改变不会影响argument对象的值改变。也就是值不会同步改变
+        function argu(a,b){
+            "use strict"
+
+            console.log("a:",a,"b:",b,"arguments[0]:",arguments[0],"arguments[1]:",arguments[1]);
+            var b = 10;
+            console.log("a:",a,"b:",b,"arguments[0]:",arguments[0],"arguments[1]:",arguments[1]);
+        }
+        argu(2,3);
+
+
+        //暂时性死区问题
+        /* function die(a,b = a){
+            //先声明参数a,再声明参数b,并且把a赋值给b.无错误
+            console.log(a,b);
+        }
+        die(1,2); */
+
+        function die(a = b,b){
+            //声明参数a,把b赋值给a,此时的b还没有声明。报错 
+            console.log(a,b);
+        }
+        // die(undefined,2);
+        //注意在ES6声明的变量或常量不能与参数同名。
+    </script>
+</body>
+</html>

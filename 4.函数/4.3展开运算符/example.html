@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //d对所有数求和
+        function sum(...args){
+            console.log(args);
+            let number = 0;
+            for(let i = 0; i < args.length; i++){
+                number += args[i];
+            }
+            console.log(number);
+            return number;
+        }
+        
+        //获取一个指定长度的随机数组成的数组
+        function getRandomArr(length){
+            const arr = [];
+            for(let i = 0; i < length; i++){
+                arr.push(Math.floor(Math.random() * 10));
+            }
+            return arr;
+        }
+
+        const result = sum(...getRandomArr(10)); 
+        console.log(result);
+    </script>
+</body>
+</html>

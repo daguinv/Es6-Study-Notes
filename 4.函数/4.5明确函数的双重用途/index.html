@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //函数的两种用途,1.执行函数 2.使用new创建对象。
+        function Person(firstName, lastName) {
+            // 当没有使用new执行函数,会导致添加属性错误，把属性添加到window上.
+            // 这时我们要判断是否使用new的方式来调用函数 --> 当前的this是否指向Person对象。
+            // 但是这种方式判断当使用call给函数硬性绑定this值时,函数并没有通过new的方式来调用.
+           /*  if (!(this instanceof Person)) {
+                console.log('no');
+                return new Person(firstName, lastName);
+            } */
+            
+            // console.log(new.target)
+            // 使用Es6 new.target 判断是否使用new来调用函数
+            if(new.target === Person){
+                console.log('yes');
+            }else{
+                console.log('no');
+            }
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.fullName = `${firstName} ${lastName}`;
+        }
+
+        const person = new Person('张', '文琼');
+
+        // const person1 = Person('张','文琼');
+
+        //使用call的方式改变this指向.虽然this指向了对象,但没有使用new所以会返回undefined
+        const p2 = Person.call(person, '张', 'wenqiong');
+        
+        //在ES6中提供了一个特殊的API 使用该API在函数内部判断该函数是否使用new来调用
+    </script>
+</body>
+
+</html>

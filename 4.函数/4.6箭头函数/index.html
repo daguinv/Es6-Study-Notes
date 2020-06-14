@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Es5
+        /*const obj = {
+            count:0,
+            start:function(){
+                console.log(this);
+                var _this = this;
+                setInterval(function(){
+                    // this.count //这里的this指向window
+                    _this.count++;
+                    // console.log(obj.count);
+                },1000)
+            },
+            regEvent:function(){
+                var _this = this;
+                window.onclick = function(){
+                    console.log(this.count);  //此时的this指向事件源。当前的事件源是window。
+                }
+            }
+        }
+        obj.start();   //谁调用this指向谁。这里的this指向obj.
+        obj.regEvent();*/
+
+        // Es6 
+        //箭头函数主要是解决函数套函数时this指向问题
+        const obj = {
+            count:0,
+            start:function(){
+                setInterval(()=>{
+                    this.count   //箭头函数的this指向定义位置的this。此时定义的位置的this由于是obj调用的函数。this指向obj。
+                },1000)
+            },
+            regEvent:function(){
+                var _this = this;
+                window.onclick = () => {
+                    console.log(this.count);  //此时的this指向事件源。当前的事件源是window。
+                }
+            }
+        }
+        obj.start();   //谁调用this指向谁。这里的this指向obj.
+        obj.regEvent();
+
+
+        const print = num =>{
+            console.log(num);
+        }
+        print("我是 print函数")
+
+        const isOdd = num => num % 2 !==0;
+        // console.log(isOdd(3));
+        // console.log(isOdd(4));
+
+        const add = (a,b) => a+b;
+        
+        //当函数直接的返回值是一个和对象，此时对象的大括号会被理解成函数体，所以对象需要使用小括号括起来，变成一个表达式
+        const sum = (a,b) => ({
+            a:a,
+            b:b,
+            sum:a+b
+        })
+        console.log(sum(2,3))
+
+        const obj1 = {
+            method:function(){
+                const func  = () => {
+                    console.log(this);  //this 指向obj1
+                    console.log(arguments)  //arguments是普通函数的arguments
+                }
+                func();
+            }
+        }
+        obj1.method(123);
+        
+
+        // 箭头函数没有原型
+        const fun = () =>{
+            console.log(this);
+        }
+        //console.dir可以显示一个对象所有的属性和方法
+        console.dir(fun) 
+        console.log(fun.prototype)   //undefined
+
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //柯里化 作用：参数复用
+        function call(a,b,c,d){
+            return a + b * c - d;
+        }   
+        /* console.log(call(1,2,3,4));
+        console.log(call(1,2,4,5)); 
+        console.log(call(1,2,5,6)); 
+        console.log(call(1,2,6,7));  */
+        
+        //当多次调用函数时总是前两个参数一样，这样每次都要重复写，比较麻烦
+        
+        // 这是我们创建一个函数,传入要执行的函数,和固定的参数,他会返回一个新函数,传入剩余参数(当参数不固定时，就会返回新的函数)
+        //当传入的所有参数够了，就执行函数
+        var newCall = curry(call,1,2);
+        console.log(newCall(3,4));
+        console.log(newCall(4,5)); 
+        console.log(newCall(5,6)); 
+        console.log(newCall(6,7)); 
+
+        //柯里化实现
+        function curry(fn,...args){
+            return function(...subArgs){
+                const allargs = [...args,...subArgs];
+                //参数够了执行函数
+                if(allargs.length === fn.length){
+                    return fn(...allargs);
+                }
+                //参数不够递归curry继续收集参数
+                else{
+                    return curry(fn,...allargs);
+                }
+            }
+
+        }
+
+         
+    </script>
+    <script src="./curry.js"></script>
+</body>
+</html>
