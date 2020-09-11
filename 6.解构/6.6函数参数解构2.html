@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 传递某一些配置，其他配置使用默认值
+    
+    // 方式一：
+    function ajax(options){
+      const defaultOptions = {
+        methos:"get",
+        url:'/'
+      }
+      const targetOpt = {
+        ...defaultOptions,
+        ...options
+      }
+      console.log(targetOpt);
+
+    };
+
+    // 方式二: 
+    // function ajax({method = 'get',url = '/'}){
+    //   console.log(method,url);
+    // }
+    
+    // 这里参数不传值会报错，因为不能解析undefined。所以这个我们给这个解构对象一个空对象的默认值
+    function ajax({method = 'get',url = '/'} = {}){
+      console.log(method,url);
+    }
+    ajax({
+      method:'get',
+      url:'/abc'
+    })
+  </script>
+</body>
+</html>

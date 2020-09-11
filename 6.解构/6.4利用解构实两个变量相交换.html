@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 在Es5中实现两数想交换要借助第三个变量
+    let a = 1; 
+    let b = 2;
+    // 在ES6中借助解构，不需要第三个变量就可以实现
+    // 将b,a放进数组中[2,1]，然后对数组进行解构 a = 2; b = 1
+    [a,b] = [b,a];
+    console.log(a,b);
+    
+
+  </script>
+</body>
+</html>

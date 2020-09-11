@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+//g修饰符：全局匹配。下一次匹配都是从上一次匹配成功的下一个位置开始，没有g就是每次都从头开始匹配
+        const test = /a+/g;
+        const str = "aaa_aa_a";
+        
+        //使用exec函数 参数：要匹配的字符串 返回包含第一个包含匹配信息的数组
+        //其中返回的数组包含2个额外属性：input：匹配项在字符串中的位置 input：应用正则表达式的字符串
+
+        //第一次匹配从0开始匹配
+        const result = test.exec(str);
+        // console.log(result);       //["aaa", index: 0, input: "aaa_aa_a", groups: undefined]
+        //第二次匹配 从3开始匹配
+        const result1 = test.exec(str); //["aa", index: 4, input: "aaa_aa_a", groups: undefined]
+        // console.log(result1);
+
+
+// y修饰符 又叫粘连修饰符
+        const t2 = /^a+/g;
+        const str2 = "aaa_aa_a";
+
+        // 第一次匹配 lastIndex = 0
+        console.log(t2.exec(str2)); //["aaa", index: 0, input: "aaa_aa_a", groups: undefined]
+
+        //第二次匹配 lastIndex = 3，y修饰符匹配的字符串从开始匹配就必须满足正则表达式，否则匹配不到。相当于/^a+/g
+        t2.lastIndex = 4; //改变lastIndex，来时从3开始匹配
+        console.log(t2.exec(str2)); //null 
+
+
+        const t3 = /a+/y;
+        const str3 = "aaa_aa_a";
+
+        // 第一次匹配 lastIndex = 0
+        console.log(t3.exec(str3)); //["aaa", index: 0, input: "aaa_aa_a", groups: undefined]
+
+        //第二次匹配 lastIndex = 3，y修饰符匹配的字符串从开始匹配就必须满足正则表达式，否则匹配不到。相当于/^a+/g
+        t3.lastIndex = 4; //改变lastIndex = 4，y修饰符从lastIndex = 4 的位置开始匹配
+        console.log(t3.exec(str3)); //[aa", index: 4, input: "aaa_aa_a", groups: undefined]
+    </script>
+</body>
+</html>

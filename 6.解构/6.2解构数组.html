@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 把数组当成对象来结构
+    const arr = ['a', 'b', 'c', 'd', 'e'];
+    // const { 0: n1, 1: n2 ,4: n4} = arr;
+    // console.log(n1,n2,n4);  //'a','b','e'
+
+
+    // 数组直接结构（按顺序结构）
+    const [n1, n2, , , n4, n5 = 123] = arr;
+    // console.log(n1, n2, n4, n5);  //'a','b','e',123
+
+
+    // 解构嵌套数组   --得到numbers下标为4的数组中的下标为2的数据，放到变量n中
+    // const numbers = ['a', 'b', 'c', 'd', [1, 2, 3, 4]];
+    // const [, , , , [, n]] = numbers;
+    // console.log(n);
+
+    // 解构数组中嵌套的对象
+    const numbers = ['a', 'b', 'c', 'd', { a: 1, b: 2 }];
+    // 方式一
+    const [,,,,{b}] = numbers
+    console.log(b);
+    // 方式二
+    const {b:B} = numbers[4];
+    console.log(B);
+    
+    
+  </script>
+</body>
+
+</html>

@@ -31,4 +31,4 @@ const objhaha = {
     7:7
 }
 console.log(Object.getOwnPropertyNames(objhaha));  
-//结果返回一个数组。数组排在前面并按升序排序，其他没动
+//结果返回一个数组(所有实例属性)。数字排在前面并按升序排序，其他没动

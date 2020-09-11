@@ -52,7 +52,7 @@ const newUser = {
 //计算属性名
 
 // ES5
-/*
+
 const prop1 = "name";
 const prop2 = "age";
 const prop3 = "sayhello";
@@ -64,9 +64,9 @@ userObj[prop2] = 18;
 userObj[prop3] = function(){
     console.log(this[prop1],this[prop2]);
 }
-// console.log(userObj[prop3]())
+console.log(userObj[prop3]())
 
-*/
+
 // Es6
 
 const prop1 = "name";

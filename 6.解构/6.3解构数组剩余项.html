@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 一：
+    //解构出对象name属性,然后剩余的所有属性放在一个新的对象中，变量名为obj
+    const user = {
+      name: 'zwq',
+      age: 18,
+      sex: '女',
+      address: {
+        proivince: '四川',
+        city: '成都'
+      }
+    }
+    // 这里的...起收集作用，将所有属性收集起来
+    const { name, ...obj } = user;
+    console.log(name, obj);
+
+
+    // 二：
+    // 结构数组前两项分别放在变量a,b中，然后将剩余的所有数据放在数组nums中
+    const numbers = [324, 7, 23, 5, 12];
+    // const [n1, n2, ...nums] = numbers; //注意：...收集能用在最后
+    // console.log(n1, n2, nums);
+
+    // 使用Es5实现上述例子
+    const num1 = numbers[0];
+    const num2 = numbers[1]
+    const nums = numbers.slice(2)
+    console.log(num1,num2,nums);
+    
+  </script>
+</body>
+
+</html>

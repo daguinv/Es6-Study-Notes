@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // function print(user){
+    //   console.log(`姓名：${user.name}`);
+    //   console.log(`姓别：${user.sex}`);
+    //   console.log(`年龄：${user.age}`);
+    //   console.log(`省份：${user.address.proivince}`);
+    //   console.log(`城市：${user.address.city}`); 
+    // }
+    
+    // 使用参数解构
+    function print({name,age,sex,address:{proivince,city}}){
+      console.log(`姓名：${name}`);
+      console.log(`姓别：${sex}`);
+      console.log(`年龄：${age}`);
+      console.log(`省份：${proivince}`);
+      console.log(`城市：${city}`); 
+    }
+    const user = {
+      name:'zwq',
+      age:18,
+      sex:'女',
+      address:{
+        proivince:'四川',
+        city:'成都'
+      }
+    }
+    print(user);
+  </script>
+</body>
+</html> 

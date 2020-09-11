@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 1.解构  
+    const user = {
+      name:'zwq',
+      age:18,
+      sex:'女',
+      address:{
+        proivince:'四川',
+        city:'成都'
+      }
+    }
+    const {name,age,address,height = 160} = user;
+    console.log(name,height,address);
+    
+    // 2.在解构中使用默认值
+    const {name,age,address,height = 160} = user;
+    console.log(name,height,address);
+
+    // 3.非同名属性解构  {属性名：变量名}
+    const {sex : gender = '男'} = user;  //这里打印sex是未定义
+    console.log(gender);   //'女'
+    const {name:myName} = user;
+    // console.log(name); 这里打印name不是undefined，是因为window上有一个name属性
+    
+    
+    // 4.深层解构
+    // 定义province变量，在解构， 此时address没有定义
+    const {address:{proivince}} = user;
+    console.log(proivince);
+    
+  </script>
+</body>
+</html>
