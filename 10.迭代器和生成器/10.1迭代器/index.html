@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 不用跟数据打交道，而是跟数据加一个管理者。
+    let arr = [3,6,9,2,4,10];
+
+    // 迭代器创建函数
+    function iterator(ite){
+      let i = 0;
+      return {
+        next(){
+          return {
+            vlaue:ite[i++],
+            done:i>ite.length
+          }
+        }
+      }
+    }
+    const obj = iterator(arr);
+    let data = obj.next();    
+
+    // 迭代所有数据
+    while(!data.done){
+      console.log(data.vlaue);
+      data = obj.next();
+    }
+  </script>
+</body>
+</html>

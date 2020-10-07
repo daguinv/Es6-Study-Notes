@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let arr = [1,5,3,6,9];
+    // 可迭代对象上有Symbol.iterator属性，属性值是一个创建构造器的函数，执行返回返回一个构造器对象
+    const obj = arr[Symbol.iterator]();
+    // 构造器对象有next()函数
+    let result = obj.next();
+
+    while(!result.done){
+      console.log(result.value);
+      result = obj.next();
+    }
+  </script>
+</body>
+</html>

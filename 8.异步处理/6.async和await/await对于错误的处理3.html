@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const test1 = async function(){
+      throw 3
+    }  
+    const test2 = async function(){
+      try {
+        const result = await test1()
+        console.log("正常状态");
+        
+      } catch (error) {
+        console.log("错误状态",error);
+        
+      }
+    }
+    test2();
+  </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 返回一个新的promise,而函数的返回值作为后续处理的参数
+
+    // 触发resolve状态
+    async function test1(num) {
+      console.log(num);
+      return 2 + num
+    }
+    
+    test1(5).then((data) =>{
+      console.log(data);
+    })
+    
+    // 触发rejected状态
+    async function test2(num) {
+      console.log(num);
+      throw 3 
+    }
+
+    test2(5).catch((data) =>{
+      console.log(data);
+    })
+  </script>
+</body>
+
+</html>

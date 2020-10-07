@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="example">
+  </div>
+  <script>
+    const data = {
+      name: 'zwq',
+      age: 18
+    }
+    // 传入目标对象,返回一个观察者对象
+    function observe(target) {
+      const dom = document.getElementById('example');
+      const proxy = new Proxy(target,{
+        set(target,key,value){
+          Reflect.set(target,key,value);
+          render();
+        },
+        get(target,key){
+          Reflect.get(target,key)
+        }
+      })
+      render();
+      function render() {
+        let html = "";
+        for(let i in target){
+          html += `<p><span>${i}:</span><span>${target[i]}</span></p>`
+        }
+        dom.innerHTML = html;
+      }
+      return proxy;
+    }
+    const watchObj = observe(data); 
+  </script>
+</body>
+
+</html>

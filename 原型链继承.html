@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function Father(name){
+      this.colors = ["red",'yellow'];
+      this.symbol = "xxx";
+      this.name = name;
+    }
+    function Son(){
+
+    }
+    Son.prototype = new Father();
+  
+    let son1 = new Son();
+    son1.colors.push("black")
+
+    let son2 = new Son();
+    
+
+  </script>
+</body>
+</html>

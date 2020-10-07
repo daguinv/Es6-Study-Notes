@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /*目前装饰器浏览器还不支持，可以借助插件帮助转换 
+      装饰器的本质就是函数使用 @函数名
+    */
+
+    class Text {
+      @Obsolete
+      print() {
+        console.log("print方法");
+      }
+    }
+    // 自动执行函数并传入3参数 类 装饰的方法 对象：里面有一个value值包含以前的方法
+    function Obsolete(target, methodName, descriptor) {
+      const oldFunc = descriptor.value;
+      descriptor.value = function (...args) {
+        console.warn('该方法以过期');
+        oldFunc.call(this,...args);
+      }
+    }
+
+  </script>
+</body>
+
+</html>

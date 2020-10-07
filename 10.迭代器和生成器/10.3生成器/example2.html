@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 创建斐波那切数列的迭代器
+    function* createFeiboIterator() {
+      let prev1 = 1;
+      let prev2 = 1;
+      while (true) {
+        let result = prev1 + prev2;
+        yield result;
+        prev2 = prev1;
+        prev1 = result;
+      }
+    }
+
+    const iterator = createFeiboIterator();
+
+  </script>
+</body>
+
+</html>

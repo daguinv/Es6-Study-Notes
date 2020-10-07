@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    class Animal {
+      // 使用构造器定义是私有属性和方法
+      constructor(type, name, age, sex) {
+        this.type = type;
+        this.name = name;
+        this.age = age;
+        this.sex = sex;
+        this.sayName = function () {
+          console.log(`my name is ${this.name}`);
+
+        }
+      }
+      // 定义构造函数的属性和方法
+      static width = 500;
+      static height = 500;
+      
+    }
+
+    const dog = new Animal('dog', '旺财', '3', 'male');
+  </script>
+</body>
+
+</html>

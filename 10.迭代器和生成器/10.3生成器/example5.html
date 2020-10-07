@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function *test(){
+      yield 1;
+      yield 2;
+      yield 3;
+    }  
+    // const generator = test();
+    // generator.return()
+    // generator.throw(new Error("haha"))
+
+    function *test2(){
+      // test(); 直接调用生成器函数不会执行里面的代码，他只会产生一个生成器对象
+      // yield test() 直接将一个生成器对象赋值给value
+      yield* test();//在yield后面加* ，表示你函数的内部也会参与迭代。
+      // 相当于直接把test()函数里面的代码copy出来
+      yield 4;
+      yield 5;
+    }
+    const generator = test2();
+  </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    const arr1 = [1, 2, 3, 4, 3, 5, 5];
+    const arr2 = [100, 1, 88, 70, 99, 96, 3, 5];
+
+    // 并集
+    const s = new Set(arr1.concat(arr2));
+    const result1 = [...s];
+
+    // 交集
+    const result2 = [...new Set(arr1)].filter((item) => arr2.indexOf(item) != -1)
+
+    // 差集 
+    // 求并集，在并集里arr1没有的或者arr2没有的就保留
+   const result3 =  [...new Set([...arr1,...arr2])].filter( item => {
+     return arr1.indexOf(item) == -1 || arr2.indexOf(item ) == -1 
+   })
+   console.log(result3);
+
+
+  // 差集：不在交集里面的就是差集
+  const result4 = [...new Set([...arr1,...arr2])].filter(item =>{
+    return result2.indexOf(item) < 0
+  })
+  console.log(result4);
+  
+   
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 使用 [表达式] 将表达式的结果（转化成字符串）作为属性名  
+    const sayName;
+    class Person{
+      constructor(name,age){
+        this.name = name;
+        this.age = age;
+      }
+      [sayName](){
+        console.log(this.name);
+        
+      }
+    }  
+    const p = new Person('zwq',18)
+  </script>
+</body>
+</html>

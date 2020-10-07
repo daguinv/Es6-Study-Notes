@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let obj = {
+      name:'zwq',
+      age:18
+    }  
+    // 当使用set时，由于set还执行obj的地址，所以不会垃圾回收。
+    // 但是weakSet他内部存储的对象地址不会影响垃圾回收。
+    // weakSet应用于检测是否还有引用指向这个对象。因为weakset不影响垃圾回收，如果这个对象在weakSet里，说明还有别的引用指向这个地址
+    let weakSet = new WeakSet();
+    weakSet.add(obj);
+    obj = null;
+    console.log(weakSet);
+    
+  </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 在迭代器中使用return， 可以提前结束迭代，将return的值放入value中，done设置为true，不在继续执行下面的迭代
+    function *method(){
+      console.log(1);
+      yield 1;
+
+      console.log(2);
+      return 2;
+
+      console.log(3);
+      yield 3;
+    }  
+    const obj = method();
+
+    // obj.next();
+  </script>
+</body>
+</html>

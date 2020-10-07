@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <script>
+    // 可以传入任何类型和数量的参数作为数组里面的项。
+    // 以前的new Arry(5) 当传递一个数字作为数组项的时候，这个数组或作为长度
+    const a = new Array(5);
+    console.log(a); //创建了5个empty的数组
+    const b = Array.of(5);
+    console.log(b); //创建了长度为1，数组项时5的数组
+    
+
+    const arr = Array.of(1,2,3,4);
+    console.log(arr);
+
+    const divs = document.querySelectorAll('div');
+    const divArr = Array.from(divs);
+  </script>
+</body>
+</html>

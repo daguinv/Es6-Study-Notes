@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="example">
+  </div>
+  <script>
+    const data = {
+      name: 'zwq',
+      age: 18
+    }
+    // 传入目标对象,返回一个观察者对象
+    function observe(target) {
+      const dom = document.getElementById('example');
+      let watchObj = {};
+      for (let prop in target) {
+        Object.defineProperty(watchObj, prop, {
+          get() {
+            return target[prop];
+          },
+          set(val) {
+            target[prop] = val;
+            render()
+          },
+          enumerable:true
+        })
+      }
+      render();
+      function render() {
+        let html = "";
+        for(let i in watchObj){
+          html += `<p><span>${i}:</span><span>${watchObj[i]}</span></p>`
+        }
+        dom.innerHTML = html;
+      }
+      return watchObj;
+    }
+    const watchObj = observe(data); 
+  </script>
+</body>
+
+</html>

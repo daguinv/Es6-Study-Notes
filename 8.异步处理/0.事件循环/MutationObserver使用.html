@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <ul></ul>
+  <button>click</button>
+  <script>
+      let count = 0; 
+      const ul = document.getElementsByTagName('ul')[0];
+      const btn = document.getElementsByTagName('button')[0];
+      btn.onclick = function(){
+        const li = document.createElement('li');
+        li.innerText = count++;
+        ul.appendChild(li);
+      }
+      // 1.创建MUtationObserver对象,传入一个函数,当监听的dom元素发生变化时运行的回调函数
+      let obserever = new MutationObserver(() => {
+        console.log('ul Change');
+        
+      })
+      // 调用observe函数  参数1 监听的dom元素 参数二:对象{你要监听那些内容}
+      obserever.observe(ul,{
+        attributes:true ,//监听属性的变化
+        childList:true ,//监听子元素的变化
+        subtree:true //监听子树的变化
+      })
+      
+
+      // 取消监听
+      // obserever.disconnect();
+  </script>
+</body>
+</html>

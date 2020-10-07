@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    const obj = {
+      name: 'zwq',
+      age: 18
+    }
+    // 不重写目标对象的底层实现，而是重写代理对象的的底层实现。
+    // 反射的方法都可以改写
+    const proxy = new Proxy(obj, {
+      // 重写反射的方法
+      set(target,key,value) {
+        console.log(target,key,value);  
+        // target[key] = value;
+        Reflect.set(target,key,value);
+      },
+      // 改写底层，当访问属性不存在时不返回undefined，而是返回-1
+      get(target,key){
+        if(Reflect.has(target,key)){
+          return Reflect.get(target,key);        
+        }else{
+          return -1
+        }
+      },
+      // 当判断该对象是否存在该属性时，返回的都是false
+      has(target,key){
+        return false;
+      }
+    });
+
+    proxy.age = 20;
+    console.log("age" in proxy);
+    
+
+  </script>
+</body>
+
+</html>

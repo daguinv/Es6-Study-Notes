@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    
+    /* 
+    // 动态原型模式
+    function Person(name, age, sex) {
+      this.name = name;
+      this.age = age;
+      this.sex = sex;
+      if (typeof this.sayName != "function") {
+        Person.prototype.sayName = function () {
+          console.log(this.name);
+        }
+      }
+    }
+    const p = new Person('zwq', 7, 'women');
+    const p2 = new Person('zwq', 7, 'women'); */
+
+
+
+
+    /* // 寄生构造函数模式
+    function Person(name,age,sex){
+      var o = new Object();
+      o.name = name;
+      o.age = age;
+      o.sex = sex;
+      o.sayName = function(){
+        console.log(this.name);
+      }
+      // 重写调用构造函数的返回值
+      return o;
+    }
+    var p = new Person('zwq',18,'woman');
+ */
+
+  function SpecialArray(...args){
+    var specialArr = new Array();
+    specialArr.push(...args);
+    specialArr.toPipedString = function(){
+      return this.join("|");
+    };
+    return specialArr;
+  }
+  var colors = new SpecialArray("red","yellow","green");
+
+
+
+  </script>
+</body>
+
+</html>

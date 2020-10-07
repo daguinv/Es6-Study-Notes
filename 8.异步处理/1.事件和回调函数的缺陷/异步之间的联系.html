@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- /*
+    邓哥心中有二十个女神，他决定用更加高效的办法
+    他同时给二十个女神表白，如果有女神同意，就拒绝其他的女神
+    并且，当所有的女神回复完成后，他要把所有的回复都记录到日志进行分析
+    用代码模拟上面的场景
+  */ -->
+  <script>
+    function express(num, callback) {
+      console.log(`邓哥向女神【${num}】发出了表白短信`);
+      setTimeout(() => {
+        if (Math.random() < 0.2) {
+          callback(true, num);
+        } else {
+          callback(false, num)
+        }
+      }, Math.floor(Math.random() * (3000-1000) + 1000));
+    }
+    
+    //是否有女神同意
+    let agree = false;
+    // 女神数组
+    let array = new Array(20);
+    // 记录结果
+    let logArr = [];
+
+    for (let i = 1; i <= 20; i++) {
+      express(i,function(vlaue){
+        logArr.push(vlaue);
+        if(vlaue){
+          console.log(`女神${i}同意了`);     
+          if(agree){
+            console.log(`邓哥回复女神${i}: 不好意思，刚才朋友用我手机，乱发的`)
+          }else{
+            agree =  true; 
+            console.log(`邓哥终于找到了真爱`);
+          }
+        }else{
+          console.log(`女神${i}拒绝了`)
+        }
+        // 输出结果
+        if(logArr.length == 20){
+          console.log(logArr); 
+        }
+      })
+    }
+
+
+  </script>
+</body>
+
+</html>

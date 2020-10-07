@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const p = new Promise((resolve,reject) => {
+      resolve(1)
+    })
+
+    p.then((data) => {
+      console.log(data);
+    })
+    p.then((data) => {
+      console.log(data + 100);
+    })
+
+    p.catch((data) => {
+      console.log(data );
+    })
+    p.catch((data) => {
+      console.log(data + 100);
+    })
+    
+    // 不管是resolved还是rejected都要做的事情使用finally
+    p.finally((d) =>{
+      console.log("finally1",d);  //没有参数，打印d是undefined
+    })
+    p.then(() => {
+      console.log("finally2");
+    })
+
+  </script>
+</body>
+</html>

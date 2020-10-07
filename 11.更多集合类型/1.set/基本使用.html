@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // set用于存放不重复的数据
+    // 创建set集合  参数：可迭代对象   内容是可迭代对象每次迭代的结果
+    let s = new Set(); //空set集合
+    // 对数组进行去重
+    let s2 = new Set([1,2,3,4,5,3,1]);
+
+    // String对象也是可迭代对象，set传入字符串也可以去重（因为字符串会创建一个基本包装类型的对象）
+    let str = new Set("abcdeddfg");
+    console.log(str);
+    
+    // 将数据添加到末尾 ,如果集合中有该值，不做任何操作
+    str.add("1");
+    str.add("s");
+    str.add("1");  //该行代码无效，因为集合中已经存在这个数据
+    
+    console.log(str.has("1"));
+    // str.clear()
+
+    for(i of str){
+      console.log(i);
+    }
+    // 由于set集合中不存在下标 所以第二个参数和第一个参数均表示set中的每一项
+    str.forEach((item ,index,set)=>{
+      console.log(item,index,set);
+    })
+    console.log(str.size);
+    
+  </script>
+</body>
+</html>

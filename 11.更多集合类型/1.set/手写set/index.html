@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script src="./mySet.js"></script>
+  <script>
+    let s = new MySet([1, 3, 2, 3, 5, 7]);
+    console.log(s);
+    s.add(10)
+    s.delete(5);
+    // s.clear();
+    for (let i of s) {
+      console.log(i);
+    }
+    s.forEach((item, i, self) => {
+      console.log(item, i, self);
+
+    });
+  </script>
+</body>
+
+</html>

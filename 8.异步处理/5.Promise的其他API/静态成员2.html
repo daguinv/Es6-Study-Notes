@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const a = new Promise((resolve,reject) =>{
+      resolve(111)
+    })
+    const b = new Promise( (resolve,reject) => {
+      resolve(a)  //传入一个promise对象，直接将promise对象的后续处理结果返回
+    })
+
+    console.log(a == b); //false
+    
+    b.then((data) => {
+      console.log(data);
+    })
+
+
+
+    const p = Promise.resolve(a);
+    p.then((data) => {
+      console.log(data);  //111
+    })
+    console.log(p == a); //true
+    
+  </script>
+</body>
+</html>

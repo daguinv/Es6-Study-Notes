@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const obj = {
+      name:'zwq',
+      age:18
+    }
+    // 设置新属性
+    Reflect.set(obj,'sex','women');
+    // 修改属性
+    Reflect.set(obj,'age',20);
+    //读取属性
+    const age = Reflect.get(obj,'age')
+
+    function fn(){
+      console.log(obj.name);
+    }
+    // 调用函数
+    Reflect.apply(fn,null,[])
+    // 删除对象的属性
+    Reflect.deleteProperty(obj,'age');
+
+    // 用构造函数的方式创建对象
+    const o = Reflect.construct(fn,[]);
+
+    // 判断一个对象是否有一个属性
+    const isproperty = Reflect.has(obj,age);
+  </script>
+</body>
+</html>

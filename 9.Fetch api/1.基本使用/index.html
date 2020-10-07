@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <button>得到所有省份数据</button>
+  <script>
+    const btn = document.getElementsByTagName('button')[0];
+
+    btn.onclick = function () {
+      getProvinces();
+    }
+
+    async function getProvinces() {
+      const url = "http://101.132.72.36:5100/api/local";
+      const config = {
+        // 设置请求方法
+        method: "OPTIONS",
+        // 设置请求头
+        headers: {
+          // 请求消息体里里面的数据是什么格式
+          "Content-Type": "application/json",
+          a: 1
+        },
+        // 设置请求体
+        // body:`{
+        //   "aaa":"1"
+        // }`,
+
+      }
+      try {
+        const res = await fetch(url, config);
+        console.log(res);
+      } catch (error) {
+        console.log(error);
+        
+      }
+
+    }
+  </script>
+</body>
+
+</html>

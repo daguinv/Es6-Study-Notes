@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 通过访问器属性当数据变化(赋值)时，会触发set函数 从新渲染页面 -->
+  <span>姓名</span>
+  <span id="name"></span>
+  <span>年龄</span>
+  <span id="age"></span>
+  <script>
+    const nameEle = document.getElementById('name');
+    const ageEle = document.getElementById('age');
+    const data = {};
+    Object.defineProperties(data,{
+      name:{
+        get(){
+          return nameEle.innerText;
+        },
+        set(val){
+          nameEle.innerText = val;
+        }
+      },
+      age:{
+        get(){
+          return age.innerText;
+        },
+        set(val){
+          age.innerText = val;
+        }
+      }
+    })
+  </script>
+</body>
+</html>

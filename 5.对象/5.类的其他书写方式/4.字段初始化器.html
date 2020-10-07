@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // class Person{
+    //   constructor(){
+    //     this.name = 'zwq',
+    //     this.age = 18
+    //   }
+    // }  
+    // 当创建的实例属性是直接赋值的不需要参数的，可以直接使用字段初始化器
+    // 写法如下
+    class Person{
+      name = 'zwq';
+      age  = 18;
+      static type = 'man';
+      sayName = () => {
+        console.log(this.name);  
+      }
+    } 
+    // 次写法相当于上面的写法。自动把他放进constructor里面
+    const person = new Person();
+
+
+    const p = person.sayName;
+    p();//这里执行p this指向对象，因为使用箭头函数。但是该方法定义在私有属性里，没有定义在原型链上。
+    // 当创建多个对象时，会创建多余空间。
+  </script>
+</body>
+</html>

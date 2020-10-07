@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const pro = new Promise((resolve,reject) => {
+      console.log(0);
+      resolve(1)
+      console.log(2);
+    })  
+    pro.then((data) => {
+      console.log(data);   // 0 2 1  
+      // thenable和catchable函数是异步的，并且是放在微任务队列里的
+    })
+  </script>
+</body>
+</html>

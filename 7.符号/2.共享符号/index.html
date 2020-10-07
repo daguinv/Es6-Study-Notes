@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    /*
+    共享符号：使用Symbol.for("描述符")
+    适用场景：可以在不同文件中拿到同一个symbol符号。
+    原理：当没有这个符号名称，创建这个符号。有这个符号名称，直接返回已创建的这个符号。
+    */
+
+
+    // 没有这个符号描述，创建符号
+    const sml = Symbol.for("a");
+    // 已经创建过这个描述符的符号，这里返回上面创建的符号放到sml2变量里
+    const sml2 = Symbol.for("a");
+    // 相当于同一个值放在两个不同的变量里，所以值是相等的
+    console.log(sml === sml2)  //true
+
+
+    // 手写共享符号
+    const symbolFor = (function(){
+      const globl = {};
+      return function(name){
+        if(!globl[name]){
+          globl[name] = Symbol(name);
+        }
+        return globl[name]
+      }
+    })()
+    
+    const test = symbolFor("haha");
+    console.log(test);
+    const test2 = symbolFor("haha");
+    console.log(test2);
+    console.log(test == test2);
+    
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 当对象的某一些方法只是为了给对象内其他方法提供服务的，但却挂载实例上，可以调用，造成干扰
+
+    /* 
+    const hero = {
+      attack:30,
+      defence:10,
+      gongji(){
+        console.log(this.attack * this.getRandom(0.8,1.1));
+      },
+      // 这个方法是工具方法为了给gongji函数提供的方法,不是用来外部调用的
+      getRandom(min,max){
+        return Math.random() * (max - min) + min;
+      }
+    } 
+    */
+
+    // 利用Symbol的唯一性可以实现成员私有化
+    // 利用闭包定义私有属性Symbol
+
+    const hero = (function () {
+      const getRandom = Symbol();
+      return {
+        attack: 30,
+        defence: 10,
+        gongji() {
+          console.log(this.attack * this[getRandom](0.8, 1.1));
+        },
+        // 可计算成员名
+        [getRandom](min, max) {
+          return Math.random() * (max - min) + min;
+        }
+      }
+    })()
+    hero.gongji()   //38 29.720969208936598
+    // const getRandom = Symbol();因为Symbol的唯一性，这里的Symbol不等于上面的Symbol
+    // hero[getRandom](2, 30)  //Uncaught ReferenceError: getRandom is not defined
+
+    // 这里如果想访问使用Object.getOwnPropertySymbols(hero)
+    const syms = Object.getOwnPropertySymbols(hero);
+    console.log(hero[syms[0]](1.1,6.3));
+    console.log(syms)
+
+    // symbol不可枚举
+    const sym = Symbol();
+    const p = {
+      a:1,
+      b:2,
+      [sym]:3
+    }
+    for(let i in p){
+      console.log(i)  // a b
+    }
+
+    // Object.getOwnPropertyNames也无法枚举Symbol
+    const o = Object.getOwnPropertyNames(p);
+    console.log(o);   //["a", "b"]
+    
+    //使用 Object.getOwnPropertySymbols枚举symbol，返回symbol数组;
+    const g = Object.getOwnPropertySymbols(p);
+    console.log(g);
+    console.log(g[0] == sym);  //true
+
+  </script>
+</body>
+
+</html>

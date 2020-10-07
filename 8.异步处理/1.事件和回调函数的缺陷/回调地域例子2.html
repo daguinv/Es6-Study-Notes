@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>   
+    //张姐喜欢3个男生，向第一个男生表白，如果第一个男生拒绝，向第二个男生表白，直到所有男生都拒绝或者有一个同意就停止
+    function express(num, callback) {
+      console.log(`向第${num}个男生表白`);
+      setTimeout(() => {
+        if (Math.random() < 0.3) {
+          callback(true, num);
+        } else {
+          callback(false, num)
+        }
+      }, 1000);
+    }
+
+    express(1, function (temp, num) {
+      if (temp == true) {
+        console.log(`第${num}个男生同意,张姐找到了真爱`);
+      } else {
+        console.log(`第${num}个男生拒绝,张姐继续表白下一个男生`);
+        express(2, function (temp, num) {
+          if (temp == true) {
+            console.log(`第${num}个男生同意,张姐找到了真爱`);
+          } else {
+            console.log(`第${num}个男生拒绝,张姐继续表白下一个男生`);
+            express(3, function (temp, num) {
+              if (temp == true) {
+                console.log(`第${num}个男生同意,张姐找到了真爱`);
+              } else {
+                console.log(`张姐被所有男生拒绝，张姐表示生无可恋`);
+              }
+            })
+          }
+        })
+      }
+    })
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    new Promise((resolve,reject) => {
+      resolve(1)
+    }).then((data) => {
+      console.log(data);
+    })
+
+    //上面代码等效于下面代码 当只有resolve时，可以直接使用Promise.resolve()
+
+    Promise.resolve(1).then((data) => {
+      console.log(data);
+    })  
+
+
+
+    new Promise((resolve,reject) => {
+      reject(2)
+    }).catch((data) => {
+      console.log(data);
+    })
+
+    // 相当于
+    Promise.reject(2).catch((data) => {
+      console.log(data);
+    })
+  </script>
+</body>
+</html>

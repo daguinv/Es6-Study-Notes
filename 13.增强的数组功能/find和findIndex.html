@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const data = [{id:1},{id:2},{id:3},{id:4},{id:5}];
+    // find 
+
+    // 找到id为5的对象
+    // find对数组中每一项运行给定函数，返回该函数第一个返回true的项
+    const result = data.find( (item) => {
+      return item.id == 5;
+    })
+    console.log(result);
+
+    // filter是把满足要求的全部项组成数组，find是返回第一个满足条件的项，没找到返回undefined。
+    
+    // findIndex  返回第一个满足条件的下标 ,没找到返回 -1
+    const index = data.findIndex(item => item.id === 5);
+    console.log(index);
+    
+  </script>
+</body>
+</html>

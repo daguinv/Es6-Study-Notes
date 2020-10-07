@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+//模板字符串${表达式}  
+    function f(){
+      return 55;
+    }
+    let s = `i am ${f()}`
+    console.log(s);
+    
+//标记函数的基本语法
+
+    const vegetable = '香菜';
+    const fruit = '芒果';
+
+
+    //process:模板字符串标记,调用标记函数,str = 标记函数的返回值
+    const str = process`喜欢的蔬菜是${vegetable}喜欢的水果是${fruit}`
+
+
+    //标记函数的第一个参数：以${}分割的字符串数组,其余参数依次是${}里面的变量 
+    function process(arr,variable1,variable2){
+      console.log(arr,variable1,variable2); //["喜欢的蔬菜是", "喜欢的水果是", "", raw: Array(3)] "香菜" "芒果"
+      /**
+      ...
+      return 处理你想返回的数据
+      ...
+      */
+    }
+    
+    
+  </script>
+</body>
+</html>
